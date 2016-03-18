@@ -9,11 +9,6 @@ var myFirebaseRef = new Firebase("https://blazing-torch-5724.firebaseio.com/");
 
 var counter = 0;
 
-myFirebaseRef.child("message").on("value", function (message) {
-  console.log('received!', message.val());
-  // obs.next(message.val());
-});
-
 let ChatRoom = {
   register(name) {
     this.user = {name: name};
@@ -22,9 +17,8 @@ let ChatRoom = {
 
   },
   sendMessage(message) {
-    console.log(`Sending "${message}"`);
     myFirebaseRef.set({
-      message: {message: `${counter}:${message}`, user: this.user.name}
+      message: {message: message, user: this.user.name}
     });
   },
   onMessage() {
