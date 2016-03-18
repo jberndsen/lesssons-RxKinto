@@ -1,3 +1,8 @@
 .chatroom {
   margin: 150px auto 50px;
+
+  > div {
+    position: relative;
+    float: left;
+  }
 }
