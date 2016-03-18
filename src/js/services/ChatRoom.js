@@ -22,6 +22,7 @@ let ChatRoom = {
 
   },
   sendMessage(message) {
+    console.log(`Sending "${message}"`);
     myFirebaseRef.set({
       message: {message: `${counter}:${message}`, user: this.user.name}
     });
@@ -29,7 +30,6 @@ let ChatRoom = {
   onMessage() {
     return Rx.Observable.create(obs => {
       myFirebaseRef.child("message").on("value", function (message) {
-        console.log('received!', message.val());
         obs.next(message.val());
       });
     });

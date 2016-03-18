@@ -14,7 +14,7 @@ var Chat = {
       container.innerHTML = container.innerHTML + `<div class="log-item"><span class="users">${message.user}</span><span class="message">${message.message}</span></div>`;
     });
 
-    Rx.Observable.interval(60000).subscribe(e => ChatRoom.sendMessage(`Hello world! ${e}`));
+    Rx.Observable.interval(5000).subscribe(e => ChatRoom.sendMessage(`Hello world! ${e}`));
   }
 };
 
