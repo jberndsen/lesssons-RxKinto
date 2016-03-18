@@ -1,6 +1,8 @@
 let template = require('./templates/chatlog.html');
 let ChatRoom = require('../services/ChatRoom');
 
+import Rx from 'rxjs/Rx';
+
 var Chat = {
   init(){
     document.getElementsByClassName('chatlog')[0].innerHTML = template;
@@ -12,10 +14,7 @@ var Chat = {
       container.innerHTML = container.innerHTML + `<div class="log-item"><span class="users">${message.user}</span><span class="message">${message.message}</span></div>`;
     });
 
-    setInterval(function () {
-      console.log('sending message...');
-      ChatRoom.sendMessage('Hello world!');
-    }, 5000);
+    Rx.Observable.interval(60000).subscribe(e => ChatRoom.sendMessage(`Hello world! ${e}`));
   }
 };
 
