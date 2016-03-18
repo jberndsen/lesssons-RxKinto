@@ -1,2 +1,16 @@
 @import 'base/reset';
 @import 'components/live-bg';
+@import 'components/login';
+
+html {
+  font-family: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.fm-logo {
+  position: relative;
+  height: 168px;
+  background-size: 160px 168px;
+  background-image: url('http://beta.frontmen.nl/fa02af8566cf440a44d4922d6d38a727.png');
+  background-repeat: no-repeat;
+  background-position: center 0;
+}
