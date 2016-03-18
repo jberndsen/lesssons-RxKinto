@@ -25,6 +25,7 @@ let Login = {
     let btnClick = Rx.Observable.fromEvent($button, 'click').subscribe(() => doLogin($input.value));
 
     function doLogin(username) {
+      store.dispatch(usersActions.subscribeToUsers());
       store.dispatch(usersActions.login(username));
       ChatRoom.register(username);
       Chat.init();
