@@ -8,7 +8,8 @@ var Users = {
     function render() {
       let el = document.getElementsByClassName('users')[0];
       el.innerHTML = template;
-      let body = el.querySelector('.panel-body');
+
+      let body = el.querySelector('.users-list');
       store.getState().users.list.forEach(user => {
         var div = document.createElement('div');
         div.classList.add('user');
