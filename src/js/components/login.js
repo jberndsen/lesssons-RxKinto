@@ -1,10 +1,9 @@
-var template = require('./templates/login.html');
+import template from './templates/login.html';
+import Rx from 'rxjs/Rx';
 
-var Rx = require('rxjs/Rx');
+let $input, $button;
 
-var $input, $button;
-
-let Login = {
+const Login = {
   init() {
     document.getElementsByTagName('main')[0].innerHTML = template;
 
@@ -25,4 +24,4 @@ let Login = {
   }
 };
 
-module.exports = Login;
+export default Login;
