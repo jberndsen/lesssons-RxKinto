@@ -16,10 +16,10 @@ var Chat = {
         ChatRoom.onShake()
             .skip(1)
             .subscribe((shake) => {
-                let originalClass = document.getElementsByClassName('container')[0].className
-                document.getElementsByClassName('container')[0].className += " shake-opacity";
+                let originalClass = document.getElementsByClassName('chatroom')[0].className
+                document.getElementsByClassName('chatroom')[0].className += " shake-opacity";
                 setTimeout(function () {
-                    document.getElementsByClassName('container')[0].className = originalClass;
+                    document.getElementsByClassName('chatroom')[0].className = originalClass;
                 }, 3000);
             });
 
