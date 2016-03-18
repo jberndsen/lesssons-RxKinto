@@ -17,13 +17,15 @@ let ChatRoom = {
 
     },
     sendMessage(message) {
-        myFirebaseRef.set({
-            message: {message: message, user: this.user.name, date: new Date().getTime()}
+        myFirebaseRef.child('message').set({
+            message: message,
+            user: this.user.name, date: new Date().getTime()
         });
     },
     sendShake() {
-        myFirebaseRef.set({
-            shake: {user: this.user.name, when: Date.now().toString()}
+        myFirebaseRef.child('shake').set({
+            user: this.user.name,
+            when: Date.now().toString()
         });
     },
     onMessage() {
