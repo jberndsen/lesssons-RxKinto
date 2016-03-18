@@ -6,22 +6,24 @@ export const LOGIN_START = 'LOGIN_START';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILED = 'LOGIN_FAILED';
 
-var Firebase = require("firebase");
-var myFirebaseRef = new Firebase("https://blazing-torch-5724.firebaseio.com/");
+var Firebase = require('firebase');
+var myFirebaseRef = new Firebase('https://blazing-torch-5724.firebaseio.com/');
 
-myFirebaseRef.child("message").on("value", function(snapshot) {
-  console.log(snapshot.val());
-});
+export function subscribeToUsers() {
+  return dispatch => {
+    myFirebaseRef.child('users').on('value', function (snapshot) {
+      var users = [];
+      snapshot.forEach(function(user) {
+        users.push(user.val());
+      });
+      dispatch(fetchUsersSuccess(users));
+    });
+  };
+}
 
 export function fetchUsers() {
   return dispatch => {
     dispatch(fetchUsersStart());
-    client
-      .bucket('chat')
-      .collection('users')
-      .list()
-      .then(res => dispatch(fetchUsersSuccess(res.data)))
-      .catch(err => dispatch(fetchUsersFailed(err)));
   };
 };
 
@@ -49,9 +51,10 @@ export function login(username) {
   return dispatch => {
     dispatch(loginStart());
     myFirebaseRef
-      .set({
-        users: [username]
-      })
+      .child('users')
+      .push(
+        username
+      )
       .then(() => {
         dispatch(loginSuccess());
       })
