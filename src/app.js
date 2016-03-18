@@ -26,5 +26,5 @@ myFirebaseRef.set({
 });
 
 myFirebaseRef.child("message").on("value", function(snapshot) {
-    alert(snapshot.val());  // Alerts "San Francisco"
+    // alert(snapshot.val());  // Alerts "San Francisco"
 });
