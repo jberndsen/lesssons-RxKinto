@@ -28,7 +28,7 @@ let Login = {
       store.dispatch(usersActions.subscribeToUsers());
       store.dispatch(usersActions.login(username));
       ChatRoom.register(username);
-      Chat.init();
+      Chat.init(store);
       
       unsubscribe();
     }
