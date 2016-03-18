@@ -1,6 +1,7 @@
 import template from './templates/login.html';
 import Rx from 'rxjs/Rx';
 import Chat from './chat';
+import ChatRoom from '../services/ChatRoom';
 import * as usersActions from '../actions/users';
 
 let $input, $button;

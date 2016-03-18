@@ -2,10 +2,17 @@
  * Created by david on 18/03/16.
  */
 
+import Rx from 'rxjs/Rx';
+
 var Firebase = require("firebase");
 var myFirebaseRef = new Firebase("https://blazing-torch-5724.firebaseio.com/");
 
-var observable;
+var counter = 0;
+
+myFirebaseRef.child("message").on("value", function (message) {
+  console.log('received!', message.val());
+  // obs.next(message.val());
+});
 
 let ChatRoom = {
   register(name) {
@@ -16,16 +23,16 @@ let ChatRoom = {
   },
   sendMessage(message) {
     myFirebaseRef.set({
-      message: message,
-      user: this.user.name
+      message: {message: `${counter}:${message}`, user: this.user.name}
     });
   },
   onMessage() {
-    myFirebaseRef.child("message").on("value", function(snapshot) {
-      // alert(snapshot.val());  // Alerts "San Francisco"
+    return Rx.Observable.create(obs => {
+      myFirebaseRef.child("message").on("value", function (message) {
+        console.log('received!', message.val());
+        obs.next(message.val());
+      });
     });
-
-    return myFirebaseRef.observe('message');
   }
 };
 
