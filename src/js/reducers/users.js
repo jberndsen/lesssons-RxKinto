@@ -9,7 +9,7 @@ const defaultState = {
   isLoggingIn: false,
   loggedIn: false,
   loginErrorMessage: '',
-  users: []
+  list: []
 };
 
 function users(state = defaultState, action) {
@@ -30,7 +30,7 @@ function users(state = defaultState, action) {
       });
     case FETCH_USERS_SUCCESS:
       return Object.assign({}, state, {
-        list: action.users
+        list: state.list.concat([action.user])
       });
     default:
       return state

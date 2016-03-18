@@ -12,11 +12,7 @@ var myFirebaseRef = new Firebase('https://blazing-torch-5724.firebaseio.com/');
 export function subscribeToUsers() {
   return dispatch => {
     myFirebaseRef.child('users').on('value', function (snapshot) {
-      var users = [];
-      snapshot.forEach(function(user) {
-        users.push(user.val());
-      });
-      dispatch(fetchUsersSuccess(users));
+      dispatch(fetchUsersSuccess(snapshot.val()));
     });
   };
 }
@@ -33,10 +29,10 @@ function fetchUsersStart() {
   };
 }
 
-function fetchUsersSuccess(users) {
+function fetchUsersSuccess(user) {
   return {
     type: FETCH_USERS_SUCCESS,
-    users
+    user
   };
 }
 
@@ -52,9 +48,7 @@ export function login(username) {
     dispatch(loginStart());
     myFirebaseRef
       .child('users')
-      .push(
-        username
-      )
+      .set(username)
       .then(() => {
         dispatch(loginSuccess());
       })
