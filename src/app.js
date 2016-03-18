@@ -1,0 +1,1 @@
+var Rx = require('rxjs/Rx');

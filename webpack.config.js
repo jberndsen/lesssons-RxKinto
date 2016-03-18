@@ -34,7 +34,7 @@ module.exports = (function () {
     // loaders
     config.module = {
         loaders: [
-            {test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/, query: { presets: ['es2015', 'react']}},
+            {test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/, query: { presets: ['es2015']}},
             {test: /\.css$/, loaders: ['style', 'css?sourceMap']},
             {test: /\.scss$/, loaders: ['style', 'css?sourceMap', 'sass?sourceMap']},
             {test: /\.html$/, loader: 'raw-loader', exclude: [root('src/index.html')]}
