@@ -1,11 +1,12 @@
 import template from './templates/login.html';
 import Rx from 'rxjs/Rx';
 import Chat from './chat';
+import * as usersActions from '../actions/users';
 
 let $input, $button;
 
 let Login = {
-  init() {
+  init(store) {
     document.getElementsByTagName('main')[0].innerHTML = template;
 
     $input = document.getElementById('username');
@@ -23,6 +24,7 @@ let Login = {
     let btnClick = Rx.Observable.fromEvent($button, 'click').subscribe(() => doLogin($input.value));
 
     function doLogin(username) {
+      store.dispatch(usersActions.login(username));
       ChatRoom.register(username);
       Chat.init();
       
