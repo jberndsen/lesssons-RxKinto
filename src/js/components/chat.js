@@ -12,4 +12,4 @@ var Chat = {
   }
 };
 
-module.exports = Chat;
+export default Chat;

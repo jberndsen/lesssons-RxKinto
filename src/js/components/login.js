@@ -1,8 +1,6 @@
-let template = require('./templates/login.html');
-let ChatRoom = require('../services/ChatRoom');
-let Chat = require('./chat');
-
-let Rx = require('rxjs/Rx');
+import template from './templates/login.html';
+import Rx from 'rxjs/Rx';
+import Chat from './chat';
 
 let $input, $button;
 
@@ -38,4 +36,4 @@ let Login = {
   }
 };
 
-module.exports = Login;
+export default Login;

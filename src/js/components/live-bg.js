@@ -1,8 +1,13 @@
-var Rx = require('rxjs/Rx');
+import Rx from 'rxjs/Rx';
 
-var background$ = Rx.Observable.interval(60000);
-
-background$.subscribe(e => {
-    document.body.style.backgroundImage = `url('https://unsplash.it/1280/720/?random&gen=${e}')`;
+const LiveBg = {
+  init: function init() {
+    var background$ = Rx.Observable.interval(60000);
+    background$.subscribe(e => {
+        document.body.style.backgroundImage = `url('https://unsplash.it/1280/720/?random&gen=${e}')`;
+      }
+    );
   }
-);
+};
+
+export default LiveBg;
