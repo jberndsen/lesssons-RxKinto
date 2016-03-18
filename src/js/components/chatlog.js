@@ -17,7 +17,7 @@ var Chat = {
             .skip(1)
             .subscribe((shake) => {
                 let originalClass = document.getElementsByClassName('chatroom')[0].className
-                document.getElementsByClassName('chatroom')[0].className += " shake-opacity";
+                document.getElementsByClassName('chatroom')[0].className += " shake-constant shake-opacity";
                 setTimeout(function () {
                     document.getElementsByClassName('chatroom')[0].className = originalClass;
                 }, 3000);
