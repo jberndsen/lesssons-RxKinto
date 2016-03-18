@@ -15,6 +15,8 @@ var Chat = {
 
     let $input = document.getElementById('sendMessage');
 
+    $input.focus();
+
     Rx.Observable.fromEvent($input, 'keyup')
       .filter(event => event.keyCode === 13 && event.target.value.length)
       .subscribe(event => {
