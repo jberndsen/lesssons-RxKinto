@@ -10,7 +10,7 @@ var Chat = {
     var container = document.getElementsByClassName('log-container')[0];
 
     ChatRoom.onMessage().filter(message => message).subscribe(message => {
-      container.innerHTML = container.innerHTML + `<div class="log-item"><span class="user">${message.user}</span><span class="message">${message.message}</span></div>`;
+      container.innerHTML = `<div class="log-item"><span class="user">${message.user}</span><span class="timestamp">${new Date(message.date).toLocaleTimeString()}</span><span class="message">${message.message}</span></div>` + container.innerHTML;
     });
 
     let $input = document.getElementById('sendMessage');

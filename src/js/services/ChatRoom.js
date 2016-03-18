@@ -19,7 +19,8 @@ let ChatRoom = {
   sendMessage(message) {
     myFirebaseRef.child('message').set({
       message: message,
-      user: this.user.name
+      user: this.user.name,
+      date: new Date().getTime()
     });
   },
   onMessage() {
