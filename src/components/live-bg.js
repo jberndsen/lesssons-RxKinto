@@ -1,11 +1,8 @@
-const Rx = require('rxjs/Rx');
+var Rx = require('rxjs/Rx');
 
-const background$ = Rx.Observable.interval(5000);
+var background$ = Rx.Observable.interval(60000);
 
-background$
-    .startWith(0)
-    .subscribe(e => {
-    let mainElement = document.getElementById('main');
-    mainElement.innerText = e;
+background$.subscribe(e => {
+    document.body.style.backgroundImage = `url('https://unsplash.it/1280/720/?random&gen=${e}')`;
   }
 );
