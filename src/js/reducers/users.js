@@ -1,7 +1,8 @@
 import {
   LOGIN_START,
   LOGIN_SUCCESS,
-  LOGIN_FAILED
+  LOGIN_FAILED,
+  FETCH_USERS_SUCCESS
 } from '../actions/users';
 
 const defaultState = {
@@ -26,6 +27,10 @@ function users(state = defaultState, action) {
       return Object.assign({}, state, {
         isLoggingIn: false,
         loginErrorMessage: action.message
+      });
+    case FETCH_USERS_SUCCESS:
+      return Object.assign({}, state, {
+        list: action.users
       });
     default:
       return state

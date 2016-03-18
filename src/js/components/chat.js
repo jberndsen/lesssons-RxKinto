@@ -4,11 +4,11 @@ let Users = require('./users');
 let Chatlog = require('./chatlog');
 
 var Chat = {
-  init(){
+  init(store){
     document.getElementsByTagName('main')[0].innerHTML = template;
 
-    Users.init();
-    Chatlog.init();
+    Users.init(store);
+    Chatlog.init(store);
   }
 };
 
