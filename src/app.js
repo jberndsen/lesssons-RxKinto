@@ -1,3 +1,5 @@
+require('./styles/app.scss');
+
 var Rx = require('rxjs/Rx');
 
 var background$ = Rx.Observable.interval(5000);
