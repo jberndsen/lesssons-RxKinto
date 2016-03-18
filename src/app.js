@@ -48,5 +48,15 @@ const store = createStoreWithMiddleware(chatAppReducer);
   Login.init(store);
 })();
 
-
 window.addEventListener("DOMContentLoaded", main);
+
+var Firebase = require("firebase");
+var myFirebaseRef = new Firebase("https://blazing-torch-5724.firebaseio.com/");
+
+myFirebaseRef.set({
+    message: "Hello World!"
+});
+
+myFirebaseRef.child("message").on("value", function(snapshot) {
+    alert(snapshot.val());  // Alerts "San Francisco"
+});
