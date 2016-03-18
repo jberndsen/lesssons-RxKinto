@@ -1,6 +1,8 @@
 @import 'base/reset';
+@import 'base/variables';
 @import 'components/live-bg';
 @import 'components/login';
+@import 'components/chat';
 
 html {
   font-family: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
