@@ -9,15 +9,19 @@ var Chat = {
 
         var container = document.getElementsByClassName('log-container')[0];
 
-    ChatRoom.onMessage().filter(message => message).subscribe(message => {
-      container.innerHTML = `<div class="log-item"><span class="user">${message.user}</span><span class="timestamp">${new Date(message.date).toLocaleTimeString()}</span><span class="message">${message.message}</span></div>` + container.innerHTML;
-    });
+        ChatRoom.onMessage().filter(message => message).subscribe(message => {
+            container.innerHTML = `<div class="log-item"><span class="user">${message.user}</span><span class="timestamp">${new Date(message.date).toLocaleTimeString()}</span><span class="message">${message.message}</span></div>` + container.innerHTML;
+        });
 
         ChatRoom.onShake()
             .skip(1)
             .subscribe((shake) => {
-            alert('you have received THE SHAKE from ' + shake.user);
-        });
+                let originalClass = document.getElementsByClassName('container')[0].className
+                document.getElementsByClassName('container')[0].className += " shake-opacity";
+                setTimeout(function () {
+                    document.getElementsByClassName('container')[0].className = originalClass;
+                }, 3000);
+            });
 
         let $input = document.getElementById('sendMessage');
         let $shaker = document.getElementById('shaker');
