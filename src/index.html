@@ -18,5 +18,25 @@
 <div class="fm-logo"></div>
 <main id="main">
 </main>
+
+    <!-- third party libs -->
+    <script src="https://js.pusher.com/3.0/pusher.min.js"></script>
+
+    <script type="text/javascript">
+        var pusher = new Pusher('1f1d2dd49bba8e59df8c', {
+            cluster: 'eu',
+            encrypted: true
+        });
+
+        var channel = pusher.subscribe('test_channel');
+
+        channel.bind('client-event', function(data) {
+            alert(data.message);
+        });
+
+        channel.trigger('client-event', {
+            "message": "hello world"
+        });
+    </script>
 </body>
 </html>
